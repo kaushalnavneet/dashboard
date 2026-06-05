@@ -62,7 +62,11 @@ const FormattedDateWrapper = ({
     ...(includeSeconds ? { second: 'numeric' } : null)
   });
   formattedDate = formatTooltip(formattedDate);
-  return <span title={formattedDate}>{content}</span>;
+  return (
+    <span role="text" aria-label={formattedDate} title={formattedDate}>
+      {content}
+    </span>
+  );
 };
 
 export default FormattedDateWrapper;
