@@ -13,10 +13,10 @@
 # https://www.ubuntuupdates.org/package/google_chrome/stable/main/base/google-chrome-stable
 # https://nodejs.org/en/about/previous-releases
 
-ARG CHROME_VERSION='153.0.8010.36-1'
-ARG NODE_VERSION='24.21.0'
+ARG CHROME_VERSION='156.0.8078.79-1'
+ARG NODE_VERSION='26.13.0'
 
-FROM cypress/factory@sha256:613b37599aaa7d319bb06ee78d65334854ad33a52a2adb7bf1a05079f341dbd6
+FROM cypress/factory@sha256:b9258d1e78a4d45b82eb3b256b6c31ad5c8ad2469954ec8d069c52c7a97afe56
 
 LABEL maintainer="Tekton Authors <tekton-dev@googlegroups.com>"
 LABEL org.opencontainers.image.source=https://github.com/tektoncd/dashboard/tree/main/packages/e2e/base-image

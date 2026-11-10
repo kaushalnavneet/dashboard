@@ -1,4 +1,4 @@
-# Copyright 2019-2025 The Tekton Authors
+# Copyright 2019-2026 The Tekton Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -80,7 +80,7 @@ spec:
     - name: IMAGES
   steps:
     - name: container-registry-auth
-      image: cgr.dev/chainguard/crane:latest-dev@sha256:a3b88c2164da32bc22337ba81383e07f7a2b1a352bf5d1784b2546926e506034
+      image: cgr.dev/chainguard/crane:latest-dev@sha256:df455321bdedcd962c50cb478c7e0a3f9b172e1ac4a0c4592913961b2f0d6370
       script: |
         #!/bin/sh
         set -ex
@@ -103,7 +103,7 @@ spec:
         cp ${DOCKER_CONFIG} /workspace/docker-config.json
 
     - name: run-ko
-      image: ghcr.io/tektoncd/plumbing/ko-gcloud:v20250930-bc9f43235b@sha256:37118ef72b901e5ed3559657bd73c8438d5b94b4833598ee683c7c3e1dfafc58
+      image: ghcr.io/tektoncd/plumbing/ko:sha-2d1ad9b@sha256:6462e09784d6c56ceb068dff9e283ea7ae95cd4a34595cd78590ff17037709ee
       env:
         - name: KO_DOCKER_REPO
           value: $(params.imageRegistry)/$(params.imageRegistryPath)
@@ -137,6 +137,10 @@ spec:
 
         # add installer script in the release
         cp ${PROJECT_ROOT}/scripts/installer $OUTPUT_RELEASE_DIR/installer
+
+        # install bash (used by installer scripts)
+        # TODO: simplify scripts and remove bashisms for better portability
+        apk update && apk add bash
 
         # build manifest for installer
         INSTALLER_MANIFEST=$OUTPUT_RELEASE_DIR/installer-release.yaml
@@ -179,7 +183,7 @@ spec:
           ${PRESERVE_IMPORT_PATH} > /workspace/built_images
 
     - name: tag-images
-      image: cgr.dev/chainguard/crane:latest-dev@sha256:a3b88c2164da32bc22337ba81383e07f7a2b1a352bf5d1784b2546926e506034
+      image: cgr.dev/chainguard/crane:latest-dev@sha256:df455321bdedcd962c50cb478c7e0a3f9b172e1ac4a0c4592913961b2f0d6370
       script: |
         #!/bin/sh
         set -ex

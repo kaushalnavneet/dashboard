@@ -22,11 +22,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Harden runner
-        uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+        uses: step-security/harden-runner@46b06cea07f9e64621fdf066ba77ac6915163d43 # v2.22.3
         with:
           egress-policy: audit
 
-      - uses: agilepathway/label-checker@be847a108e0a42beaa699bb9c9783c7bc01ef2ee # v2.0.0
+      - uses: agilepathway/label-checker@7e36291d6bfe1ddb6cbc8cd5081d2eb85ba1f7c6 # v2.0.75
         with:
           prefix_mode: true
           one_of: "kind/"

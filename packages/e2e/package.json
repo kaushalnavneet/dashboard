@@ -17,11 +17,11 @@
     "test:ci": "node -e \"console.log('process.arch:', process.arch); console.log('kubectl version:');\" && kubectl version && cypress run"
   },
   "devDependencies": {
-    "cypress": "^16.1.1"
+    "cypress": "^16.2.1"
   },
   "engines": {
-    "node": "^24.21.0",
-    "npm": "^11.19.0"
+    "node": "^26.13.0",
+    "npm": "^11.20.0"
   },
   "repository": {
     "type": "git",

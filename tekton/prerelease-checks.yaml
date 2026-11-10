@@ -39,7 +39,7 @@ spec:
         value: $(params.releaseBucket)
   steps:
     - name: check-git-tag
-      image: ghcr.io/wolfi-dev/git:alpine@sha256:fbb1d9e204121fe10b99602606e478e6ac9ea4128b4719a30b4b4f626bae0a32
+      image: ghcr.io/wolfi-dev/git:alpine@sha256:71147296ea1533dbbcca2c1cf44483fde13a3956e5e5b355cef998a880f52dc4
       script: |
         echo "Checking git tag"
         # Look for the tag in the list of tags
@@ -49,7 +49,7 @@ spec:
         echo "Version ${VERSION_TAG} already tagged for ${PACKAGE}"
         exit 1
     - name: check-release-file
-      image: docker.io/curlimages/curl:8.22.0@sha256:58adaa4e8dca9c988bae2aba4ab3434a0bb2da16bbe3f92dec39ec7785166777
+      image: docker.io/curlimages/curl:8.23.0@sha256:3fb7e13e5d179a845c97d78204f3f1064d1907037f26a3ebf91710571151fd93
       script: |
         set +e
         echo "Checking release file"
@@ -74,7 +74,7 @@ spec:
         echo "Release ${VERSION_TAG} already exists for ${PACKAGE}"
         exit 1
     - name: success-confirmation
-      image: docker.io/library/alpine:3.24.2@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6
+      image: docker.io/library/alpine:3.24.3@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
       script: |
         echo "All pre-release checks for ${PACKAGE} @ ${VERSION_TAG} were successful"
         echo "Happy releasing 😺"
